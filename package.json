@@ -1,0 +1,11 @@
+{
+  "name": "vanillashops",
+  "version": "1.0.0",
+  "description": "vanilla es6 spa frontend for Shops1.0(Laundry1.0)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tendai Prince Dzonga",
+  "license": "ISC"
+}
