@@ -1,37 +1,56 @@
 'use strict'
-//import axios from 'axios'
+//import { axios } from 'axios'
+//import { API_URL } from '/scripts/config.js'
 
 // Model 
 
-let email = ''
-
-
+const email = emailInput
+const API_URL = 'http://localhost:3000/'
 
 // View 
 
-function render() {
-	return 
-		`
+const render = () => {
+		return`
 			<article>
-				<input type="email" name="email"  id="email" placeholder="email"  oninput="">
+				<input type="email" name="email"  id="email" placeholder="email"  oninput="emailInput(event)">
 				
-				<button> Register/Login </button>
+				<button onclick="submit()"> Register/Login </button>
 				
 			</article>
 		`
-	
 }
 
 // Update | Actions 
 
-function emailInput() {
-	return 
+function emailInput(e) {
+	let emailtext = e.target.value
+	return email
 }
 
 function submit() {
 	
-	
+	postData(API_URL+'login', email)
+		.then(data => console.log(data))
+		.catch(err => console.log(err))
 	
 }
 
-document.getElementById('login').innerHTML = render
+
+function postData(url, data) {
+	
+	return fetch(url, {
+		body : JSON.stringify(data),
+		credentials : 'include',
+		method : 'POST',
+		mode : 'cors',
+		headers : {
+			'content-type' : 'application/json'
+		}
+		
+	})
+	.then(response => response.json)
+	.catch(err => console.log('Error:', err))
+	
+}
+
+document.getElementById('login').innerHTML = render()
