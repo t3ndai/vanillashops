@@ -10,7 +10,7 @@ const API_URL = 'http://localhost:3000/'
 // View 
 
 const render = () => {
-		return`
+		return `
 			<article>
 				<input type="email" name="email"  id="email" placeholder="email"  oninput="emailInput(event)">
 				
@@ -23,13 +23,15 @@ const render = () => {
 // Update | Actions 
 
 function emailInput(e) {
-	let emailtext = e.target.value
-	return email
+	let emailText = e.target.value
+	return emailText
 }
 
 function submit() {
 	
-	postData(API_URL+'login', email)
+	const body = { email : emailInput }
+	
+	postData(API_URL+'login', body)
 		.then(data => console.log(data))
 		.catch(err => console.log(err))
 	
@@ -38,18 +40,21 @@ function submit() {
 
 function postData(url, data) {
 	
+	console.log(JSON.stringify(data)) //this is empty for some reason 
+	
 	return fetch(url, {
+		headers : {
+			'Content-Type' : 'application/json',
+		},
 		body : JSON.stringify(data),
 		credentials : 'include',
 		method : 'POST',
 		mode : 'cors',
-		headers : {
-			'content-type' : 'application/json'
-		}
+		
 		
 	})
 	.then(response => response.json)
-	.catch(err => console.log('Error:', err))
+	.catch(err => console.log('Error:', err.json))
 	
 }
 
