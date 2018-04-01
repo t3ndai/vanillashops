@@ -1,11 +1,12 @@
 'use strict'
-//import { axios } from 'axios'
-//import { API_URL } from '/scripts/config.js'
+
+//Imports 
+import { API_URL } from './config.js'
+import { postData, navigate } from './utils.js'
 
 // Model 
 
-const email = emailInput
-const API_URL = 'http://localhost:3000/'
+export let email = {'email': ''}
 
 // View 
 
@@ -22,40 +23,47 @@ const render = () => {
 
 // Update | Actions 
 
-function emailInput(e) {
-	let emailText = e.target.value
-	return emailText
-}
-
-function submit() {
+export const emailInput = (e) => {
 	
-	const body = { email : emailInput }
+	//let emailText = e.target.value
+	//console.log(emailText)
 	
-	postData(API_URL+'login', body)
-		.then(data => console.log(data))
-		.catch(err => console.log(err))
+	/*function getEmail() {
+		return new e.target.value
+	}*/
+	email = Object.assign({}, {'email': e.target.value})
 	
 }
 
-
-function postData(url, data) {
+export const submit = () => {
 	
-	console.log(JSON.stringify(data)) //this is empty for some reason 
 	
-	return fetch(url, {
-		headers : {
-			'Content-Type' : 'application/json',
-		},
-		body : JSON.stringify(data),
-		credentials : 'include',
-		method : 'POST',
-		mode : 'cors',
+	const body = email
+	
+	console.log(JSON.stringify(body))
+	
+	/*postData(API_URL+'login', body)
+		.then(data => {
+			console.log(data)
+			navigate('../views/auth.html')
+		})
+		.catch(err => console.log(err))*/
+	
+	try {
+		let response = postData(API_URL+'login', body)
+		
+		if (response.ok) {
+			navigate('../views/auth.html')
+		}
 		
 		
-	})
-	.then(response => response.json)
-	.catch(err => console.log('Error:', err.json))
+	}catch(err) {
+		console.log(err)
+	}
 	
 }
 
-document.getElementById('login').innerHTML = render()
+export function addToPage() {
+	document.getElementById('login').innerHTML = render()
+}
+

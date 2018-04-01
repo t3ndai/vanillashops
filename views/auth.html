@@ -1,0 +1,32 @@
+<!DocType html>
+<html>
+
+	<head>
+		
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width initial-scale=1.0'>
+		<title> ShopsApp </title>
+		
+	</head>
+	
+	<body>
+		
+		<article id='auth'></article>
+		
+		<!--<script type='application/javascript' src='../scripts/auth.js'></script>-->
+		<script type='module'>
+			
+			import { addToPage, tokenInput, submit, token } from '../scripts/auth.js'
+			
+			document.token = token
+			document.tokenInput = tokenInput
+			document.submit = submit
+			addToPage()
+			
+			
+		</script>
+		
+	</body>
+
+
+</html>

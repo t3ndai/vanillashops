@@ -4,6 +4,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<meta name='viewport' content="width=device-width, initial-scale=1.0">
+		<title> ShopsApp </title>
 		
 	</head>
 	
@@ -11,8 +12,20 @@
 		
 		<article id="login"></article>
 		
-		<script type="application/javascript" src="../scripts/LoginPage.js"></script>
-		<!--<script type="module" import "../scripts/LoginPage.js/render"></script>-->
+		<!--<script type="application/javascript" src="../scripts/LoginPage.js"></script>-->
+		<script type="module" >
+			
+			import { addToPage, emailInput, submit, email } from '../scripts/LoginPage.js'
+			
+			document.email = email
+			document.emailInput = emailInput
+			document.submit = submit
+			addToPage()
+			
+			
+		
+		</script>
+		
 	</body>
 
 </html>
