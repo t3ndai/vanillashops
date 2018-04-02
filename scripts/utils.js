@@ -57,11 +57,9 @@ export async function postData(url, data) {
 		
 			})
 			
-			if (response.ok) {
-				return response.json()
-			}else {
-				throw Error('Network response not good')
-			}
+			
+			return await handleResponse(response)
+			
 		
 	} catch (err) {
 		console.log('Error:', err.message)
@@ -79,23 +77,25 @@ export async function getData(url) {
 			'mode' : 'cors',
 		})
 		
-		if (response.ok) {
-			return response.json()
-		}else {
-			throw Error('Network response not good')
-		}
+		return await handleResponse(response)
 	
 	} catch(err) {
 		console.log('Error:', err.message)
 	}
 }
 
-function handleErrors(response) {
-	if (!response.ok) {
-		console.log(response.statusText)
-		throw Error(response.statusText)
+async function handleResponse(response) {
+	
+	if (response.status >= 200 && response.status < 300) {
+		return await response.json()
+	}else if (response.status == 401) {
+		throw Error('Not authorized')
+	}else if (response.status == 400) {
+		throw Error('Invalid input')
+	}else {
+		throw Error('Errors encountered')
 	}
-	return response
+	
 }
 
 export const navigate = (page) => {
