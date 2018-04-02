@@ -35,22 +35,24 @@ export const emailInput = (e) => {
 	
 }
 
-export const submit = () => {
+export const submit = async () => {
 	
 	
 	const body = email
 	
 	console.log(JSON.stringify(body))
 	
-	/*postData(API_URL+'login', body)
+	postData(API_URL+'login', body)
 		.then(data => {
 			console.log(data)
 			navigate('../views/auth.html')
 		})
-		.catch(err => console.log(err))*/
+		.catch(err => console.log(err))
 	
-	try {
-		let response = postData(API_URL+'login', body)
+	/*try {
+		let response = await postData(API_URL+'login', body)
+		
+		console.log(response)
 		
 		if (response.ok) {
 			navigate('../views/auth.html')
@@ -59,7 +61,7 @@ export const submit = () => {
 		
 	}catch(err) {
 		console.log(err)
-	}
+	}*/
 	
 }
 

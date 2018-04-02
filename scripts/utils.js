@@ -69,6 +69,27 @@ export async function postData(url, data) {
 	
 }
 
+export async function getData(url) {
+	
+	try {
+		let response = await fetch(url, {
+			'headers' : { 'Content-Type' : 'application/json' },
+			'credentials' : 'include',
+			'method' : 'GET',
+			'mode' : 'cors',
+		})
+		
+		if (response.ok) {
+			return response.json()
+		}else {
+			throw Error('Network response not good')
+		}
+	
+	} catch(err) {
+		console.log('Error:', err.message)
+	}
+}
+
 function handleErrors(response) {
 	if (!response.ok) {
 		console.log(response.statusText)

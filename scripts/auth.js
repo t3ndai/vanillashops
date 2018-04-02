@@ -35,14 +35,14 @@ export const submit = () => {
 	
 	const body = token 
 	
-	/*postData(API_URL+'auth', body)
+	postData(API_URL+'auth', body)
 		.then(data => {
 			console.log(data)
 			navigate('../views/dash.html')
 		})
-		.catch(err => console.log(err))*/
+		.catch(err => console.log(err))
 	
-	try {
+	/*try {
 		let response = postData(API_URL+'auth', body)
 		
 		if (response.ok) {
@@ -51,7 +51,7 @@ export const submit = () => {
 			
 	}catch(err) {
 		console.log(err)
-	}
+	}*/
 	
 }
 

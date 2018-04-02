@@ -13,6 +13,16 @@
 
 	<body>
 		Dashboard
+		<article id='customers'></article>
+		<script type='module'>
+			import { addToPage } from '../scripts/dash.js'
+			import { customers, populateCustomersTable, getCustomers } from '../scripts/customers.js'
+			
+			document.customers = customers
+			addToPage()
+			getCustomers()
+						
+		</script>
 	</body>
 
 
