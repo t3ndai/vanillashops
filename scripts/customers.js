@@ -15,16 +15,20 @@ export const renderCustomers = () => {
 		   		<article>
 	
 					<table id='customers-table'>
+  
+            <caption> Customers </caption>
 	
-						<tr>
+            <thead>
+  						<tr>
+	              
+                
+  							<th> Customer Name </th>
+  							<th> Customer Email </th>
+  							<th> Customer Phone </th>
+                <th> Customer Address </th>
 	
-							<th> Customer Name </th>
-							<th> Customer Email </th>
-							<th> Customer Phone </th>
-              <th> Customer Address </th>
-	
-						</tr>
-	
+  						</tr>
+            </thead>	
 					</table>
 	
 				
@@ -35,38 +39,67 @@ export const renderCustomers = () => {
 } 
 
 
+function renderCell(data) {
+  
+  console.log(data)
+  /*let cell = document.createElement('td')
+  cell.textContent = data
+  
+  return cell*/
+  
+  return `
+    <td> ${data} </td>
+  `
+}
+
+
 function renderCustomer(customer) {
   console.log(customer)
+
   return `
-  
     <tr>
-  
-      <td> ${customer.name} </td>
-      <td> ${customer.email} </td>
-      <td> ${customer.phone} </td>
-      <td> ${customer.address} </td>
-  
-    <tr>
-  
+      <td> ${renderCell(customer.name)} </td>
+      <td> ${renderCell(customer.email)} </td>
+      <td> ${renderCell(customer.phone)} </td>
+      <td> ${renderCell(customer.address)} </td>
+    </tr>
   `
+  /*let row = document.createElement('tr')
+  <td> ${/*Object.values(customer).map(data => renderCell(data)) 
+  Object.values(customer).map((data) => {
+      
+          let cell = renderCell(data)
+          row.appendChild(cell)
+          
+        
+      })
+      
+  return row*/
 }
 
 export function populateCustomersTable(customers) {
   
   //this will be cleaner 
   //but not getting array from getCustomers()  
-  
+  let tbody = document.createElement('tbody')
   customers
-      .map((customer) => {
-        let row = document.createElement('td')
+      .map((customer) => { 
+        //let row = document.createElement('td')  
+        //row.innerHTML = renderCustomer(customer)        
+        let table = document.getElementById('customers-table')
+        let row = table.insertRow()
         row.innerHTML = renderCustomer(customer)
-        document.getElementById('customers-table').appendChild(row)
+
       })
       
 }
 
 
 //Actions 
+
+export function customerClick() {
+  
+}
 
 export async function getCustomers() {
   
@@ -77,6 +110,7 @@ export async function getCustomers() {
       
   }catch(err) {
     console.log(err)
+    
   }
 }
 
