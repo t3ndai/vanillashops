@@ -1,6 +1,7 @@
 'use strict'
 
 //Imports
+import { AuthorizationError, InputError } from './errors.js'
 
 //Actions 
 
@@ -44,6 +45,10 @@ export async function getData(url) {
 		return await handleResponse(response)
 	
 	} catch(err) {
+		
+		if (err instanceof AuthorizationError) {
+			throw new AuthorizationError(err.message)
+		}
 		console.log('Error:', err.message)
 	}
 }
@@ -53,7 +58,7 @@ async function handleResponse(response) {
 	if (response.status >= 200 && response.status < 300) {
 		return await response.json()
 	}else if (response.status == 401) {
-		throw Error('Not authorized')
+		throw new AuthorizationError('Not authorized')
 	}else if (response.status == 400) {
 		throw Error('Invalid input')
 	}else {

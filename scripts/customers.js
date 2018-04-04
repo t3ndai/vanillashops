@@ -2,6 +2,7 @@
 //Imports 
 import { API_URL } from './config.js'
 import { getData } from './utils.js'
+import { AuthorizationError, InputError } from './errors.js'
 
 //Models 
 export let customers = []
@@ -109,6 +110,12 @@ export async function getCustomers() {
       populateCustomersTable(customersData)
       
   }catch(err) {
+      
+    if (err instanceof AuthorizationError) {
+      console.log('executed')
+      location.replace('/')
+    }
+   
     console.log(err)
     
   }
