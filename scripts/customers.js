@@ -1,7 +1,7 @@
 'use strict'
 //Imports 
 import { API_URL } from './config.js'
-import { getData } from './utils.js'
+import { getData, renderCell } from './utils.js'
 import { AuthorizationError, InputError } from './errors.js'
 
 //Models 
@@ -40,20 +40,6 @@ export const renderCustomers = () => {
 } 
 
 
-function renderCell(data) {
-  
-  console.log(data)
-  /*let cell = document.createElement('td')
-  cell.textContent = data
-  
-  return cell*/
-  
-  return `
-    <td> ${data} </td>
-  `
-}
-
-
 function renderCustomer(customer) {
   console.log(customer)
 
@@ -83,11 +69,11 @@ export function populateCustomersTable(customers) {
   //this will be cleaner 
   //but not getting array from getCustomers()  
   let tbody = document.createElement('tbody')
+  let table = document.getElementById('customers-table')
   customers
       .map((customer) => { 
         //let row = document.createElement('td')  
         //row.innerHTML = renderCustomer(customer)        
-        let table = document.getElementById('customers-table')
         let row = table.insertRow()
         row.innerHTML = renderCustomer(customer)
 

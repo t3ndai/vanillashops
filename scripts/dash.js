@@ -3,7 +3,8 @@
 //Imports 
 import { API_URL } from './config.js'
 import { getData } from './utils.js'
-import { renderCustomers, getCustomers } from './customers.js'
+import { renderCustomers } from './customers.js'
+import { renderReceipts } from './receipts.js'
 
 //Models
 
@@ -14,6 +15,7 @@ import { renderCustomers, getCustomers } from './customers.js'
 export function addToPage() {
   
   document.getElementById('customers').innerHTML = renderCustomers()
+  document.getElementById('receipts').innerHTML = renderReceipts()
   
 }
 

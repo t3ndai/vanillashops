@@ -1,0 +1,20 @@
+flow 
+dash 
+ - renders customers table 
+ - renders receipts table ( # number | date | customer name | amount | status )
+ - renders revenue for the day 
+ - enables customer creation 
+ 
+ 
+customers 
+  - gets customers data 
+  - inserts data into table 
+  - create row 
+  - create cell 
+  - insert data into cell 
+
+
+receipts 
+  - get receipts 
+  - insert data into table 
+  

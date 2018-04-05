@@ -3,6 +3,22 @@
 //Imports
 import { AuthorizationError, InputError } from './errors.js'
 
+
+//Views
+
+export function renderCell(data) {
+  
+  console.log(data)
+  /*let cell = document.createElement('td')
+  cell.textContent = data
+  
+  return cell*/
+  
+  return `
+    ${data}
+  `
+}
+
 //Actions 
 
 export async function postData(url, data) {
@@ -60,7 +76,7 @@ async function handleResponse(response) {
 	}else if (response.status == 401) {
 		throw new AuthorizationError('Not authorized')
 	}else if (response.status == 400) {
-		throw Error('Invalid input')
+		throw new InputError('Invalid input')
 	}else {
 		throw Error('Errors encountered')
 	}
