@@ -76,6 +76,7 @@ export function populateCustomersTable(customers) {
         //row.innerHTML = renderCustomer(customer)        
         let row = table.insertRow()
         row.innerHTML = renderCustomer(customer)
+        row.onclick = () => { createCustomerReceipt(event, customer) }
 
       })
       
@@ -84,7 +85,9 @@ export function populateCustomersTable(customers) {
 
 //Actions 
 
-export function customerClick() {
+export function createCustomerReceipt(e, customer) {
+  
+  console.log(customer)
   
 }
 

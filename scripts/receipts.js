@@ -42,12 +42,30 @@ function renderReceipt(receipt) {
       <td> ${renderCell(receipt.receipt.date)} </td>
       <td> ${renderCell(receipt.receipt.customer.name)} </td>
       <td> ${renderCell(receipt.receipt.total)} </td>
-      <td> ${renderCell(receipt.receipt.status)} </td>
+      <td style="${renderStatus(receipt.receipt.status)}"></td>
   
     </tr>
   
   `
   
+}
+
+function viewReceiptDetails(e, receipt){
+  console.log(receipt)
+  alert('meh')
+}
+
+function renderStatus(status) {
+  
+  let statusMap = new Map(Object.entries(status))
+  
+  if (statusMap.get('pending') === true ) {
+    return `background-color: #E63946`
+  }else if (statusMap.get('ready') === true) {
+    return `background-color: #E0CA3C`
+  }else if (statusMap.get('picked_up') === true ) {
+    return `background-color: #048A81`
+  }
 }
 
 export function populateReceiptsTable(receipts) {
@@ -56,8 +74,11 @@ export function populateReceiptsTable(receipts) {
   
   receipts.map(receipt => {
     
-    let row = table.insertRow()
+    let row = document.createElement('tr')
     row.innerHTML = renderReceipt(receipt)
+    row.onclick = () => { viewReceiptDetails(event, receipt) }
+    //row.addEventListener('click', viewReceiptDetails)
+    table.appendChild(row)
     
   })
   
