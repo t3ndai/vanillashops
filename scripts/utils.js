@@ -36,7 +36,13 @@ export async function postData(url, data) {
 			
 		
 	} catch (err) {
-		console.log('Error:', err.message)
+    
+    if (err instanceof AuthorizationError) {     
+      throw new AuthorizationError(err.message)          
+    }else if (err instanceof InputError) {     
+      throw new InputError(err.message)
+    }
+		//console.log('Error:', err.message)
 	}
 	
 }

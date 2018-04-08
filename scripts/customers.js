@@ -1,7 +1,7 @@
 'use strict'
 //Imports 
 import { API_URL } from './config.js'
-import { getData, renderCell } from './utils.js'
+import { getData, renderCell, navigate } from './utils.js'
 import { AuthorizationError, InputError } from './errors.js'
 
 //Models 
@@ -14,23 +14,25 @@ export const renderCustomers = () => {
 	return `
 	
 		   		<article>
-	
-					<table id='customers-table'>
   
-            <caption> Customers </caption>
+            <button id-'add-customer'>Add Customer</button>
 	
-            <thead>
-  						<tr>
+  					<table id='customers-table'>
+  
+              <caption> Customers </caption>
+	
+              <thead>
+    						<tr>
 	              
                 
-  							<th> Customer Name </th>
-  							<th> Customer Email </th>
-  							<th> Customer Phone </th>
-                <th> Customer Address </th>
+    							<th> Customer Name </th>
+    							<th> Customer Email </th>
+    							<th> Customer Phone </th>
+                  <th> Customer Address </th>
 	
-  						</tr>
-            </thead>	
-					</table>
+    						</tr>
+              </thead>	
+  					</table>
 	
 				
 				</article>
@@ -91,6 +93,11 @@ export function createCustomerReceipt(e, customer) {
   
 }
 
+export function addCustomer() {
+  
+  
+}
+
 export async function getCustomers() {
   
   try {
@@ -102,7 +109,8 @@ export async function getCustomers() {
       
     if (err instanceof AuthorizationError) {
       console.log('executed')
-      location.replace('/')
+      //location.replace('/')
+      navigate('/')
     }
    
     console.log(err)

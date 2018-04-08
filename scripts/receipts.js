@@ -2,7 +2,7 @@
 
 //Imports 
 import { API_URL } from './config.js'
-import { getData, renderCell } from './utils.js'
+import { getData, renderCell, navigate } from './utils.js'
 import { AuthorizationError } from './errors.js'
 
 //Models 
@@ -98,7 +98,8 @@ export async function getReceipts() {
   } catch (err) {
      
     if (err instanceof AuthorizationError ) {
-      location.replace('/')
+      navigate('/')
+      //location.replace('/')
     }
     
     console.log(err)

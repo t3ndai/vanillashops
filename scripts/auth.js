@@ -3,6 +3,7 @@
 //Imports
 import { postData, navigate } from './utils.js'
 import { API_URL } from './config.js'
+import { InputError } from './errors.js'
 
 
 //Model 
@@ -31,27 +32,27 @@ export const tokenInput = (e) => {
 }
 
 
-export const submit = () => {
+export const submit = async () => {
 	
 	const body = token 
 	
-	postData(API_URL+'auth', body)
-		.then(data => {
-			console.log(data)
-			navigate('../views/dash.html')
-		})
-		.catch(err => console.log(err))
-	
-	/*try {
-		let response = postData(API_URL+'auth', body)
+	try {
+		let response = await postData(API_URL+'auth', body)
+    
+    console.log(response)
 		
-		if (response.ok) {
-			navigate('../views/dash.html')
+		if (response.message) {
+			navigate('../views/new-shop.html')
+		}else {
+		  navigate('../views/new-shop.html')
 		}
 			
 	}catch(err) {
 		console.log(err)
-	}*/
+    if (err instanceof InputError) {
+      alert('token expired')
+    }
+	}
 	
 }
 
