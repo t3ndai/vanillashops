@@ -13,7 +13,7 @@ export let email = {'email': ''}
 const render = () => {
 		return `
 			<article>
-				<input type="email" name="email"  id="email" placeholder="email"  oninput="emailInput(event)">
+				<input type="email" name="email"  id="email" placeholder="email" required oninput="emailInput(event)">
 				
 				<button onclick="submit()"> Register/Login </button>
 				
@@ -31,6 +31,9 @@ export const emailInput = (e) => {
 	/*function getEmail() {
 		return new e.target.value
 	}*/
+    
+  let input_email = document.getElementById('') 
+    
 	email = Object.assign({}, {'email': e.target.value})
 	
 }
@@ -42,26 +45,29 @@ export const submit = async () => {
 	
 	console.log(JSON.stringify(body))
 	
-	postData(API_URL+'login', body)
+	/*postData(API_URL+'login', body)
 		.then(data => {
 			console.log(data)
 			navigate('../views/auth.html')
 		})
-		.catch(err => console.log(err))
+		.catch(err => console.log(err))*/
 	
-	/*try {
+	try {
 		let response = await postData(API_URL+'login', body)
 		
-		console.log(response)
-		
-		if (response.ok) {
+    		
+		if (response.message) {
 			navigate('../views/auth.html')
 		}
 		
 		
 	}catch(err) {
+    
+    if (err instanceof InputError) {
+      alert('input a correct email')
+    }
 		console.log(err)
-	}*/
+	}
 	
 }
 

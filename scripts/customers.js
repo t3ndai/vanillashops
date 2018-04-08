@@ -109,8 +109,7 @@ export async function getCustomers() {
       
     if (err instanceof AuthorizationError) {
       console.log('executed')
-      //location.replace('/')
-      navigate('/')
+      location.replace('/')
     }
    
     console.log(err)

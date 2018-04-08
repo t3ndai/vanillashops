@@ -17,8 +17,13 @@
     
     <script type='module'>
       
-      import { addToPage } from '../scripts/new_shop.js'
+      import { addToPage, shop, nameInput, phoneInput, addressInput, submit } from '../scripts/new_shop.js'
       
+      document.shop = shop
+      document.nameInput = nameInput
+      document.phoneInput = phoneInput
+      document.addressInput = addressInput
+      document.submit = submit
       addToPage()
       
     </script>

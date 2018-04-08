@@ -16,7 +16,7 @@ const render = () => {
 	return `
 				<article> 
 	
-					<input type='text' placeholder='token' name='token' oninput='tokenInput(event)'>
+					<input type='text' placeholder='token' name='token' required minlength='5' maxlength='5' oninput='tokenInput(event)'>
 					<button onclick='submit()'> Submit </button>
 				</article>
 	
@@ -44,7 +44,7 @@ export const submit = async () => {
 		if (response.message) {
 			navigate('../views/new-shop.html')
 		}else {
-		  navigate('../views/new-shop.html')
+		  navigate('../views/dash.html')
 		}
 			
 	}catch(err) {

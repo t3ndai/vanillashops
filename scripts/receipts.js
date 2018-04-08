@@ -98,8 +98,8 @@ export async function getReceipts() {
   } catch (err) {
      
     if (err instanceof AuthorizationError ) {
-      navigate('/')
-      //location.replace('/')
+      //navigate('/')
+      location.replace('/')
     }
     
     console.log(err)

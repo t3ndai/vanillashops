@@ -22,8 +22,7 @@ export async function postData(url, data) {
 		
 		let response =  await fetch(url, {
 				headers : {
-					'Content-Type' : 'application/json',
-				},
+					'Content-Type' : 'application/json' },
 				body : JSON.stringify(data),
 				credentials : 'include',
 				method : 'POST',
