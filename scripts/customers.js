@@ -15,7 +15,7 @@ export const renderCustomers = () => {
 	
 		   		<article>
   
-            <button id-'add-customer'>Add Customer</button>
+            <button id-'add-customer' onclick='addCustomer()'>Add Customer</button>
 	
   					<table id='customers-table'>
   
@@ -95,7 +95,7 @@ export function createCustomerReceipt(e, customer) {
 
 export function addCustomer() {
   
-  
+  navigate('../views/new-customer.html')
 }
 
 export async function getCustomers() {

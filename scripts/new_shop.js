@@ -43,7 +43,7 @@ export async function submit(){
     console.log(response)
     
     if (response.message) {
-      //navigate('../views/dash.html')
+      navigate('../views/dash.html')
     }
     
   }catch(err) {
