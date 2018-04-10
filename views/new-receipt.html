@@ -11,12 +11,29 @@
 
   <body>
     
-    <article id-'new-receipt'> </article>
+    <article id='new-receipt'> </article>
     
-  <body>
+    <script type='module'>
+    
+      import { receipt, populateReceipt, submit, item1Input, price1Input, item2Input, price2Input, 
+               item3Input, price3Input, receiptTotal } from '../scripts/new-receipt.js'
+    
+      document.receipt = receipt
+      document.submit = submit
+      document.item1Input = item1Input
+      document.price1Input = price1Input
+      document.item2Input = item2Input
+      document.price2Input = price2Input
+      document.item3Input = item3Input
+      document.price3Input = price3Input
+      populateReceipt()
+      receiptTotal()
+    
+    </script>
+    
+  </body>
 
-
-
+  
 
 
 </html>

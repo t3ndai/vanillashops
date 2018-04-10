@@ -51,6 +51,7 @@ function renderCustomer(customer) {
       <td> ${renderCell(customer.email)} </td>
       <td> ${renderCell(customer.phone)} </td>
       <td> ${renderCell(customer.address)} </td>
+      <button id='addReceiptBTN'> + new receipt </button>
     </tr>
   `
   /*let row = document.createElement('tr')
@@ -72,13 +73,16 @@ export function populateCustomersTable(customers) {
   //but not getting array from getCustomers()  
   let tbody = document.createElement('tbody')
   let table = document.getElementById('customers-table')
+  //let button = document.getElementById('addReceiptBTN')
   customers
       .map((customer) => { 
         //let row = document.createElement('td')  
         //row.innerHTML = renderCustomer(customer)        
         let row = table.insertRow()
         row.innerHTML = renderCustomer(customer)
-        row.onclick = () => { createCustomerReceipt(event, customer) }
+        //button.onclick = () => { createCustomerRecipt(event, customer) }
+        let button = row.getElementsByTagName('button')[0]
+        button.onclick = () => { createCustomerReceipt(event, customer) }
 
       })
       
@@ -89,7 +93,9 @@ export function populateCustomersTable(customers) {
 
 export function createCustomerReceipt(e, customer) {
   
+  sessionStorage.setItem('customer', JSON.stringify(customer))
   console.log(customer)
+  navigate('../views/new-receipt.html')
   
 }
 
@@ -108,7 +114,6 @@ export async function getCustomers() {
   }catch(err) {
       
     if (err instanceof AuthorizationError) {
-      console.log('executed')
       location.replace('/')
     }
    
