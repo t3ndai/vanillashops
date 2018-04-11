@@ -44,7 +44,7 @@ export const submit = async () => {
 		if (response.message) {
 			navigate('../views/new-shop.html')
 		}else {
-		  //navigate('../views/dash.html')
+		  navigate('../views/dash.html')
 		}
 			
 	}catch(err) {

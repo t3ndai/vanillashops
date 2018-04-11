@@ -16,7 +16,7 @@
     <script type='module'>
     
       import { receipt, populateReceipt, submit, item1Input, price1Input, item2Input, price2Input, 
-               item3Input, price3Input, receiptTotal } from '../scripts/new-receipt.js'
+               item3Input, price3Input, notesInput, receiptTotal } from '../scripts/new-receipt.js'
     
       document.receipt = receipt
       document.submit = submit
@@ -26,6 +26,7 @@
       document.price2Input = price2Input
       document.item3Input = item3Input
       document.price3Input = price3Input
+      document.notesInput = notesInput
       populateReceipt()
       receiptTotal()
     

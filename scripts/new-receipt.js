@@ -30,7 +30,7 @@ export let receipt = {
       price : 0,
     },
   },
-  special_notes : '',
+  notes : '',
   total : 0,
   status : {
     ready : false, 
@@ -42,7 +42,7 @@ export let receipt = {
 
 //Views 
 
-function renderReceipt(customer) {
+function renderReceipt(customer, date) {
   return `
   
     <article>
@@ -57,7 +57,7 @@ function renderReceipt(customer) {
   
         <tr>
           <td> &nbsp; </td>
-          <th> 04/09/18 </th>
+          <th> ${date} </th>
     
         <tr>
   
@@ -123,7 +123,7 @@ function renderReceipt(customer) {
         <tr>
           <tr> <td> * Any special notes </td></tr>
           <tr>
-            <td rowspan='2' contenteditable='true'> Special notes/comments here </td>
+            <td rowspan='2' contenteditable='true' oninput='notesInput(event)'> Special notes/comments here </td>
           </tr>
         
         </tr>
@@ -156,23 +156,43 @@ export const price3Input = (e) => {
    receipt.details.item_3.price = e.target.innerText
    receiptTotal() 
 }
-//export const item1Input = (e) => receipt.details.item_1.detail = e.target.innerText
+export const notesInput = (e) => receipt.notes = e.target.innerText
 
 export const receiptTotal = () => {
   
  let sum = document.getElementById('total')
   
- sum.value = Number.parseInt(receipt.details.item_1.price) + Number.parseInt(receipt.details.item_2.price) 
-          + Number.parseInt(receipt.details.item_3.price)
+  sum.value = (Number.parseFloat(receipt.details.item_1.price) 
+  +  Number.parseFloat(receipt.details.item_2.price)
+  +  Number.parseFloat(receipt.details.item_3.price)).toFixed(2)
   
-  receipt.total = Number.parseInt(sum.value)
+  receipt.total = Number.parseFloat((Number.parseFloat(sum.value)).toFixed(2))
   
 }
 
 
-export function submit() {
+export async function submit() {
   
   console.log(receipt)
+  
+  try {
+    let response = await postData(API_URL+'receipts', receipt)
+    
+    console.log(response)
+    
+    if (response.message) {
+      navigate('../views/dash.html')
+    }
+    
+  }catch(err) {
+    console.log(err)
+    if (err instanceof AuthorizationError) {
+      alert('Expired session')
+    }else if (err instanceof InputError) {
+      alert('Wrong input data')
+    }
+  }
+  
 }
 
 
@@ -181,7 +201,10 @@ export function populateReceipt() {
   let customer = JSON.parse(sessionStorage.getItem('customer'))
   receipt.customer = customer
   
+  let date = (new Date).toDateString()
+  receipt.date = date
+  
   let article = document.getElementById('new-receipt')
-  article.innerHTML = renderReceipt(customer)
+  article.innerHTML = renderReceipt(customer, date)
 
 }

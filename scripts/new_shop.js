@@ -50,8 +50,9 @@ export async function submit(){
     
     if (err instanceof InputError) {
       alert('Invalid Input')
+    }else if (err instanceof AuthorizationError) {
+      alert('Expired session')
     }
-    
     console.log(err)
   }
   
