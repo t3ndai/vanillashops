@@ -38,11 +38,11 @@ function renderReceipt(receipt) {
   return `
     <tr>
   
-      <td> ${renderCell(receipt.receipt._id)} </td>
-      <td> ${renderCell(receipt.receipt.date)} </td>
-      <td> ${renderCell(receipt.receipt.customer.name)} </td>
-      <td> ${renderCell(receipt.receipt.total)} </td>
-      <td style="${renderStatus(receipt.receipt.status)}"></td>
+      <td> ${renderCell(receipt.receipt_id)} </td>
+      <td> ${renderCell(receipt.date_created)} </td>
+      <td> ${renderCell(parseReceiptDetails(receipt).customer.name)} </td> 
+      <td> ${renderCell(receipt.total)} </td>
+      <td style="${renderStatus(parseReceiptDetails(receipt).status)}"></td>
   
     </tr>
   
@@ -50,9 +50,20 @@ function renderReceipt(receipt) {
   
 }
 
+
+
+//Actions
+
+function parseReceiptDetails(receipt) {
+  let details = JSON.parse(receipt.details)  
+  return details
+  
+  //JSON.parse(receipt.details).customer.name
+}
+
 function viewReceiptDetails(e, receipt){
-  console.log(receipt)
-  alert('meh')
+  console.log(JSON.parse(receipt.details).customer)
+  //alert('meh')
 }
 
 function renderStatus(status) {
@@ -84,8 +95,6 @@ export function populateReceiptsTable(receipts) {
   
 }
 
-
-//Actions
 
 export async function getReceipts() {
   

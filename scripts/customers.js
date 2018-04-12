@@ -67,6 +67,11 @@ function renderCustomer(customer) {
   return row*/
 }
 
+
+
+
+//Actions 
+
 export function populateCustomersTable(customers) {
   
   //this will be cleaner 
@@ -87,9 +92,6 @@ export function populateCustomersTable(customers) {
       })
       
 }
-
-
-//Actions 
 
 export function createCustomerReceipt(e, customer) {
   

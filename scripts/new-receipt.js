@@ -173,14 +173,13 @@ export const receiptTotal = () => {
 
 export async function submit() {
   
-  console.log(receipt)
+  
   
   try {
     let response = await postData(API_URL+'receipts', receipt)
     
-    console.log(response)
-    
     if (response.message) {
+      sessionStorage.removeItem('customer')
       navigate('../views/dash.html')
     }
     
