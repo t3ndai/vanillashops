@@ -43,6 +43,7 @@ function renderReceipt(receipt) {
       <td> ${renderCell(parseReceiptDetails(receipt).customer.name)} </td> 
       <td> ${renderCell(receipt.total)} </td>
       <td style="${renderStatus(parseReceiptDetails(receipt).status)}"></td>
+      <button> view details </button>
   
     </tr>
   
@@ -61,9 +62,19 @@ function parseReceiptDetails(receipt) {
   //JSON.parse(receipt.details).customer.name
 }
 
+function parseDate(date) {
+  return date.toLocaleString('en-US')
+}
+
+function changeStatus(e, status) {
+  
+}
+
 function viewReceiptDetails(e, receipt){
-  console.log(JSON.parse(receipt.details).customer)
-  //alert('meh')
+  
+  sessionStorage.setItem('receipt', JSON.stringify(receipt))
+  navigate('../views/detailed-receipt.html')
+  
 }
 
 function renderStatus(status) {
