@@ -5,17 +5,23 @@
     
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title> ShopsApp </title>
     
   </head>
   
   <body>
     <article id='detailed-receipt'></article>
+    <article id='new-status'></article>
     
     <script type='module'>
       
-      import { populateReceipt } from '../scripts/detailed-receipt.js'
+      import { populateReceipt, populateStatusChange, changeStatus, getReceipt } from '../scripts/detailed-receipt.js'
       
-      populateReceipt()
+      document.changeStatus = changeStatus
+      getReceipt()
+      populateStatusChange()
+      
+      
       
     </script>
     
