@@ -3,6 +3,7 @@
 //Imports 
 import { API_URL } from './config.js'
 import { AuthorizationError } from './errors.js'
+import { patchData, navigate } from './utils.js'
 
 //Models 
 let receipt = {}
@@ -13,6 +14,8 @@ function renderReceipt(receipt, details) {
   return `
   
     <article>
+  
+      <button> Go Back to Dashboard </button>
   
       <table>
   
@@ -98,7 +101,7 @@ function renderReceipt(receipt, details) {
         <tr>
           <tr>
             <td> Status  </td>
-            <td style="${renderStatus(details.status)}"> Pending </td> 
+            <td style="${renderStatus(details.status)}">  </td> 
           </tr>
   
         </tr>
@@ -141,22 +144,32 @@ export function changeStatus(e) {
   let new_status = e.target.value
   let details = JSON.parse(receipt.details)
   console.log('change', e.target.value)
-  console.log(details)
+  //console.log(details)
   
   switch(new_status) {
     case 'Ready':
       details.status = { 'ready' : true }
       populateReceipt(receipt, details)
+      receipt.details = JSON.stringify(details)
+      sessionStorage.setItem('receipt', JSON.stringify(receipt))
+      console.log(receipt)
+      patchData(API_URL+'receipts', receipt)
       break
       
     case 'Picked_Up':
       details.status = { 'picked_up' : true }
       populateReceipt(receipt, details)
+      receipt.details = JSON.stringify(details)
+      sessionStorage.setItem('receipt', JSON.stringify(receipt))
+      patchData(API_URL+'receipts', receipt)
       break
       
     case 'Pending': 
       details.status = { 'pending' : true }
       populateReceipt(receipt, details)
+      receipt.details = JSON.stringify(details)
+      sessionStorage.setItem('receipt', JSON.stringify(receipt))
+      patchData(API_URL+'receipts', receipt)
       break
   }
   
