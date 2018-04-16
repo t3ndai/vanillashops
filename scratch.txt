@@ -12,9 +12,28 @@ customers
   - create row 
   - create cell 
   - insert data into cell 
+  
+customer 
+  - name | phone | email | address 
+  
+receipt 
+  - shop -> name | phone | email | address 
+  - customer -> name | phone | email 
+  - date 
+  - details -> item 1 / price 1 | item 2 / price 2 | item 3 / price 3
+  - special notes 
+  - total 
+  - status -> ready | picked_up | pending 
 
 
 receipts 
   - get receipts 
   - insert data into table 
   
+do validations //this can wait maybe ?
+  - email 
+  - token 
+  - shop fields
+  
+errors 
+  - server errors

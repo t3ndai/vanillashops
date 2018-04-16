@@ -43,7 +43,7 @@ export const renderCustomers = () => {
 
 
 function renderCustomer(customer) {
-  console.log(customer)
+  //console.log(customer)
 
   return `
     <tr>

@@ -16,7 +16,7 @@ export function renderCell(data) {
 
 export async function postData(url, data) {
 		
-	console.log(JSON.stringify(data)) 
+	//console.log(JSON.stringify(data)) 
 	
 	try {
 		
@@ -48,7 +48,7 @@ export async function postData(url, data) {
 
 export async function patchData(url, data) {
   
-  console.log(JSON.stringify(data))
+  //console.log(JSON.stringify(data))
   
   try {
     
