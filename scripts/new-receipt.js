@@ -173,8 +173,6 @@ export const receiptTotal = () => {
 
 export async function submit() {
   
-  
-  
   try {
     let response = await postData(API_URL+'receipts', receipt)
     

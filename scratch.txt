@@ -24,6 +24,10 @@ receipt
   - special notes 
   - total 
   - status -> ready | picked_up | pending 
+  
+  
+customer's historical transactions 
+  - #number | receipt date | amount | items 
 
 
 receipts 

@@ -52,6 +52,7 @@ function renderCustomer(customer) {
       <td> ${renderCell(customer.phone)} </td>
       <td> ${renderCell(customer.address)} </td>
       <button id='addReceiptBTN'> + new receipt </button>
+      <button id='historyBTN'> history </button>
     </tr>
   `
   /*let row = document.createElement('tr')
@@ -86,8 +87,11 @@ export function populateCustomersTable(customers) {
         let row = table.insertRow()
         row.innerHTML = renderCustomer(customer)
         //button.onclick = () => { createCustomerRecipt(event, customer) }
-        let button = row.getElementsByTagName('button')[0]
-        button.onclick = () => { createCustomerReceipt(event, customer) }
+        let addReceiptBtn = row.getElementsByTagName('button')[0]
+        addReceiptBtn.onclick = () => { createCustomerReceipt(event, customer) }
+        
+        let historyBtn = row.getElementsByTagName('button')[1]
+        historyBtn.onclick = () => { customerHistory(event, customer) }
 
       })
       
@@ -98,6 +102,14 @@ export function createCustomerReceipt(e, customer) {
   sessionStorage.setItem('customer', JSON.stringify(customer))
   console.log(customer)
   navigate('../views/new-receipt.html')
+  
+}
+
+export function customerHistory(e, customer) {
+  
+  sessionStorage.setItem('customer', JSON.stringify(customer))
+  console.log(customer)
+  navigate('../views/customer-receipts.html')
   
 }
 

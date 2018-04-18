@@ -18,13 +18,14 @@
 		<article id='receipts'></article>
 		<script type='module'>
 			import { addToPage } from '../scripts/dash.js'
-			import { customers, populateCustomersTable, getCustomers, addCustomer, createCustomerReceipt } from '../scripts/customers.js'
+			import { customers, populateCustomersTable, getCustomers, addCustomer, createCustomerReceipt, customerHistory } from '../scripts/customers.js'
       import { receipts, getReceipts } from '../scripts/receipts.js'
       import { getRevenue } from '../scripts/revenues.js'
 			
 			document.customers = customers
       document.addCustomer = addCustomer
       document.createCustomerReceipt = createCustomerReceipt
+      document.customerHistory = customerHistory
 			addToPage()
 			getCustomers()
       getReceipts()
