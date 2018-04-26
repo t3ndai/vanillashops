@@ -28,7 +28,7 @@ export function renderRevenue() {
 
 function revenueAmount( revenue ) {
   
-  document.getElementById('revenue-text').innerText = `$${revenue.revenue}`
+  document.getElementById('revenue-text').innerText = `$${Number.parseFloat(revenue.revenue).toFixed(2)}`
   
   
 }

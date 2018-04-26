@@ -14,11 +14,11 @@ function renderCustomerReceipts(customer){
   return `
     <article>
   
-      <button> Go Back To Dashboard </button>
+      <button onclick='backToDash()'> Go Back To Dashboard </button>
   
       <table id='customer-receipts-table'>
   
-        <caption> ${customer.name} Purchase History </caption>
+        <caption> ${customer.name}'s Purchase History </caption>
   
         <tr>
   
@@ -55,6 +55,12 @@ function renderReceipt(receipt) {
 
 //Actions 
 
+export function backToDash() {
+  
+  navigate('./dash.html')
+  
+}
+
 function getCustomer() {
   
   return customer = JSON.parse(sessionStorage.getItem('customer'))
@@ -75,8 +81,6 @@ function populateCustomerReceiptsTable(receipts) {
 }
 
 async function getCustomerReceipts(customer) {
-  
-  console.log(customer)
   
   try {
     
