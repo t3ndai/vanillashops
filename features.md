@@ -8,4 +8,5 @@
 ##ToDo
 ~~Navigate between html pages~~
 ~~Modularize i.e use ES^ modules~~ 
-Render Customers 
+~~Render Customers ~~
+Styling 

@@ -39,5 +39,13 @@ do validations //this can wait maybe ?
   - token 
   - shop fields
   
+Styling
+  - Dash 
+  
 errors 
   - server errors
+  
+colors 
+  - #222 
+  - #333
+  - #111

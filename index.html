@@ -7,16 +7,93 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		
 		<title> ShopsApp </title>
+    
+    <style>
+      
+      html {
+        font-family : Verdana sans-serif;
+        font-weight : 500;
+        display : grid;
+        color : #383D3B;
+         
+      }
+      
+      .btn {
+        border-radius : 4.0px;
+        border : 1px solid #696969;
+        text-align : center;
+        text-transform : uppercase;
+        line-height : 1.5;
+        font-weight : 600;
+        font-size : 1.2rem;
+        text-decoration : none;
+        padding : 1.2rem;
+        color : #2E3532;
+        
+      }
+      
+      .header {
+        display : flex;
+        justify-content : flex-end;
+      }
+      
+      .main-text {
+        font-size : 3.0rem;
+        color : #172121;
+      }
+      
+      .list-text {
+        font-size : 1.5rem;
+        color : #383D3B;
+      }
+      
+      .footer {
+        color : #8693ab;
+      }
+      
+      body {
+        display : grid;
+      }
+      
+    </style>
 		
 	</head>
+  
+  <header class='header'>
+    
+		<a href='views/login.html' class='btn'> Login | Register </a>
+	
+		<!--<a href='views/auth.html' class='btn'> Auth </a>-->
+    
+  </header>
 	
 	<body>
+      
+    <article class='main-text'>
+      
+      <h1> Simple software that enables you to run your business operations efficiently </h1>
+      
+      <p class='list-text'> Dollar Transcript enables you to </p>
+      
+      <ul class='list-text'>
+        
+        <li> Email receipts invoices to customers </li>
+        
+        <li> Know and Establish a better relationship with your customers </li>
+        
+        <li> Track your customer's order pipeline </li>
+        
+      </ul>
+      
+    </article>
 		
-		<a href='views/login.html'> Login </a>
-		
-		<a href='views/auth.html'> Auth </a>
-
 	</body>
+  
+  <footer class='footer'>
+    
+    <p> Made with 🖤 by Afrikan Indie | Ancestral Software Industries </p>
+    
+  </footer>
 
 </html>
 

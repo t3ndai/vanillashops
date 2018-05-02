@@ -12,10 +12,13 @@ export let email = {'email': ''}
 
 const render = () => {
 		return `
-			<article>
-				<input type="email" name="email"  id="email" placeholder="email" required oninput="emailInput(event)">
+			<article class='article'>
+
+        <p class='article-text'> We'll send you an email with an Auth token to Login or Register </p>
+      
+				<input class='input' type="email" name="email"  id="email" placeholder="email" required oninput="emailInput(event)">
 				
-				<button onclick="submit()"> Register/Login </button>
+				<button class='btn pointer' onclick="submit()"> Confirm </button>
 				
 			</article>
 		`
