@@ -13,9 +13,9 @@ let receipt = {}
 function renderReceipt(receipt, details) {
   return `
   
-    <article>
+    <article class='article'>
   
-      <button> Go Back to Dashboard </button>
+      <!--<button> Go Back to Dashboard </button>-->
   
       <table>
   
@@ -86,7 +86,7 @@ function renderReceipt(receipt, details) {
         <tr>
       
           <th rowspan='2'> Total </th>
-          <th rowspan='2'>  ${ receipt.total }   </th>
+          <td rowspan='2' class='article-text'>  $${ receipt.total }   </td>
   
         </tr>
   
@@ -116,21 +116,21 @@ function renderReceipt(receipt, details) {
 function viewStatusChange() {
   return `
      
-    <article>
+    <article class='article status-article'>
   
-        <p> Change Status </p>
+        <p class='article-text'> Change Status </p>
   
-        <label> new status </label> 
-  
-        <select onchange='changeStatus(event)'>
+        <!--<label> new status </label>-->
     
-          <option value='Ready'> Ready </option>
+          <select onchange='changeStatus(event)' class='select'>
+    
+            <option value='Ready'> Ready </option>
   
-          <option value='Picked_Up'> Picked Up </option>
+            <option value='Picked_Up'> Picked Up </option>
   
-          <option value='Pending' selected> Pending </option>
+            <option value='Pending' selected> Pending </option>
   
-        </select>
+          </select>
   
     </article>
   

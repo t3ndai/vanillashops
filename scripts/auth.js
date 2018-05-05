@@ -14,10 +14,12 @@ export let token = {'token' : ''}
 
 const render = () => {
 	return `
-				<article> 
+				<article class='article'> 
+  
+          <p class='article-text'> Input auth code, you received in your email to continue </p>
 	
-					<input type='text' placeholder='token' name='token' required minlength='5' maxlength='5' oninput='tokenInput(event)'>
-					<button onclick='submit()'> Submit </button>
+					<input class= 'input' type='text' placeholder='token' name='token' required minlength='5' maxlength='5' oninput='tokenInput(event)'>
+					<button class= 'btn pointer' onclick='submit()'> Continue </button>
 				</article>
 	
 			`

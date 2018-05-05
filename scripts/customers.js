@@ -12,14 +12,14 @@ export let customers = []
 
 export const renderCustomers = () => {
 	return `
+      
+          <article class='article'>
+    
+            <button class='right-btn table-btn pointer' id-'add-customer' onclick='addCustomer()'>Add Customer</button>
 	
-		   		<article>
+  					<table id='customers-table' class = 'table highlight'>
   
-            <button id-'add-customer' onclick='addCustomer()'>Add Customer</button>
-	
-  					<table id='customers-table'>
-  
-              <caption> Customers </caption>
+              <caption class='article-text'> Customers </caption>
 	
               <thead>
     						<tr>
@@ -32,11 +32,11 @@ export const renderCustomers = () => {
 	
     						</tr>
               </thead>	
+  
+              <tbody></tbody>
   					</table>
-	
-				
-				</article>
-	
+  
+        </article>
 	
 			`
 } 
@@ -51,8 +51,8 @@ function renderCustomer(customer) {
       <td> ${renderCell(customer.email)} </td>
       <td> ${renderCell(customer.phone)} </td>
       <td> ${renderCell(customer.address)} </td>
-      <button id='addReceiptBTN'> + new receipt </button>
-      <button id='historyBTN'> history </button>
+      <button id='addReceiptBTN' class='table-btn pointer'> + new receipt </button>
+      <button id='historyBTN' class='table-btn pointer'> history </button>
     </tr>
   `
   /*let row = document.createElement('tr')

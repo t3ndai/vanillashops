@@ -13,8 +13,8 @@ export function renderRevenue() {
   return `
     <article>
   
-      <h1> Today's Revenue is </h1>
-      <h2 id='revenue-text'>  $0 </h2>
+      <h1 class='article-text text-center'> Today's Revenue is </h1>
+      <h2 class='text-center main-text' id='revenue-text'>  $0 </h2>
   
   
     </article>

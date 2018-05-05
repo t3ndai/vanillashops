@@ -14,14 +14,16 @@ export let customer = {'name' : '', 'phone' : '', 'email' : '', 'address' : '' }
 export function render() {
   return `
   
-    <article>
+    <article class='article'>
   
-      <input type='text' placeholder='name' required minlength=2 id='name' name='name' oninput='nameInput(event)'>
-      <input type='tel' placeholder='phone' required minlength=10 id='phone' name='phone' oninput='phoneInput(event)'>
-      <input type='text' placeholder='email' required id='email' name='email' oninput='emailInput(event)'>
-      <input type='text' placeholder='address' id='address' name='address'oninput='addressInput(event)'>
+      <p class='article-text'> add new customer details  </p>
   
-      <button onclick='submit()'> SUBMIT </button>
+      <input class='input' type='text' placeholder='name' required minlength=2 id='name' name='name' oninput='nameInput(event)'>
+      <input class='input' type='tel' placeholder='phone' required minlength=10 id='phone' name='phone' oninput='phoneInput(event)'>
+      <input class='input' type='text' placeholder='email' required id='email' name='email' oninput='emailInput(event)'>
+      <input class='input' type='text' placeholder='address' id='address' name='address'oninput='addressInput(event)'>
+  
+      <button onclick='submit()' class='btn pointer'> SUBMIT </button>
 
     </article>  
   `

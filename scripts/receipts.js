@@ -14,16 +14,16 @@ export let receipts = []
 export function renderReceipts() {
   return `
     <article>
-      <table id='receipts-table'>
+      <table id='receipts-table' class='table'>
   
-        <caption> Receipts </caption>
+        <caption class='article-text'> Receipts </caption>
   
         <thead>
           <tr>
             <th>  # Number </th>
             <th>  Date </th>
             <th> Customer Name </th>
-            <th> Amount </th>
+            <th>  $ Amount </th>
             <th> Status </th>
           </tr>  
         </thead>
@@ -43,7 +43,7 @@ function renderReceipt(receipt) {
       <td> ${renderCell(parseReceiptDetails(receipt).customer.name)} </td> 
       <td> ${renderCell(receipt.total)} </td>
       <td style="${renderStatus(parseReceiptDetails(receipt).status)}"></td>
-      <button> view details </button>
+      <button class='table-btn pointer'> view details </button>
   
     </tr>
   
@@ -72,6 +72,8 @@ function changeStatus(e, status) {
 
 function viewReceiptDetails(e, receipt){
   
+  console.log('clicked')
+  
   sessionStorage.setItem('receipt', JSON.stringify(receipt))
   navigate('../views/detailed-receipt.html')
   
@@ -98,7 +100,9 @@ export function populateReceiptsTable(receipts) {
     
     let row = document.createElement('tr')
     row.innerHTML = renderReceipt(receipt)
-    row.onclick = () => { viewReceiptDetails(event, receipt) }
+    let button = row.getElementsByTagName('button')[0]
+    button.onclick = () => { viewReceiptDetails(event, receipt) } 
+    //row.onclick = () => { viewReceiptDetails(event, receipt) }
     //row.addEventListener('click', viewReceiptDetails)
     table.appendChild(row)
     

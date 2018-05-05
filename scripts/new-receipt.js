@@ -45,15 +45,19 @@ export let receipt = {
 function renderReceipt(customer, date) {
   return `
   
-    <article>
+    <article class='article'>
   
-      <table>
+     <!--<button class='table-btn right-btn'> go back to dashboard </button>-->
   
-        <colgroup span='4'>
-      
-            <col span='3'>
-            <col span='1'>
-        </colgroup>
+      <p class='article-text'> create new customer receipt </p>
+  
+      <table class='table'>
+  
+        <thead>
+            <th> &nbsp; </th>
+            <th> &nbsp; </th>
+  
+        </thead>
   
         <tr>
           <td> &nbsp; </td>
@@ -94,21 +98,21 @@ function renderReceipt(customer, date) {
   
         <tr>
           
-          <td contenteditable='true' oninput='item1Input(event)'> item 1 </td>
-          <td contenteditable='true' oninput='price1Input(event)'> price 1 </td>
+          <td contenteditable='true' oninput='item1Input(event)' class='item-cell'> item 1 </td>
+          <td contenteditable='true' oninput='price1Input(event)' > price 1 </td>
   
         </tr>
         
         <tr>
           
-          <td contenteditable='true' oninput='item2Input(event)'> item 2 </td>
+          <td contenteditable='true' oninput='item2Input(event)'class='item-cell'> item 2 </td>
           <td contenteditable='true' oninput='price2Input(event)'> price 2 </td>
   
         </tr>
         
         <tr>
           
-          <td contenteditable='true' oninput='item3Input(event)'> item 3 </td>
+          <td contenteditable='true' oninput='item3Input(event)'class='item-cell'> item 3 </td>
           <td contenteditable='true' oninput='price3Input(event)'> price 3 </td>
   
         </tr>
@@ -116,21 +120,21 @@ function renderReceipt(customer, date) {
         <tr>
       
           <th rowspan='2'> Total </th>
-          <th rowspan='2'> <output name='total' id='total'> XX </output> </th>
+          <td rowspan='2' class='text-right article-text'> <output name='total' id='total'> $XX </output> </td>
   
         </tr>
   
         <tr>
           <tr> <td> * Any special notes </td></tr>
           <tr>
-            <td rowspan='2' contenteditable='true' oninput='notesInput(event)'> Special notes/comments here </td>
+            <td rowspan='2' contenteditable='true' oninput='notesInput(event)' class='item-cell'> Special notes/comments here </td>
           </tr>
         
         </tr>
         
       </table>
   
-      <button onclick='submit()'> SUBMIT </button>
+      <button onclick='submit()' class='btn pointer'> SUBMIT </button>
   
     </article>
   
@@ -162,7 +166,7 @@ export const receiptTotal = () => {
   
  let sum = document.getElementById('total')
   
-  sum.value = (Number.parseFloat(receipt.details.item_1.price) 
+  sum.value = `$` + (Number.parseFloat(receipt.details.item_1.price) 
   +  Number.parseFloat(receipt.details.item_2.price)
   +  Number.parseFloat(receipt.details.item_3.price)).toFixed(2)
   

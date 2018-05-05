@@ -13,19 +13,21 @@ export let shop = { 'name' : '', 'phone': '', 'address' : '' }
 
 export function renderNewShop() {
   return `
-    <article>
+    <article class='article'>
   
-      <input type='text' placeholder='shop name' required oninput='nameInput(event)'>
-      <input type='text' placeholder='phone' required minlength='10' oninput='phoneInput(event)'>
-      <input type='text' placeholder='address' required oninput='addressInput(event)'>
+      <p class='article-text'> add your shop's details </p>
   
-      <button onclick='submit()'> SUBMIT </button>
+      <input class ='input' type='text' placeholder='shop name' required oninput='nameInput(event)'>
+      <input class ='input' type='text' placeholder='phone' required minlength='10' oninput='phoneInput(event)'>
+      <input class ='input' type='text' placeholder='address' required oninput='addressInput(event)'>
+
+      <button onclick='submit()' class='btn'> continue </button>
   
     </article>
   `
 }
 
-
+  
 //Actions 
 
 export const nameInput = (e) => shop.name = e.target.value //Object.assign({}, {'name' : e.target.value })

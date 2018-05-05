@@ -10,14 +10,120 @@
     
     <style>
       
-      @font-face {
-        font-family : verdana sans-serif;
-        font-weight : 400;
+      html {
+        
+        display : grid;
+        font-family : Verdana sans-serif;
+        font-weight : 500;
+        color : #383D3B;
+        line-height : 1.5;
         
       }
       
+      body {
+        display : flex;
+        flex-flow : column wrap;
+        justify-content : center;
+        align-items : center;
+        margin : 4.0rem;
+        
+      }
+      
+      .table-btn {
+        border-radius : 6px;
+        padding : 0.6rem;
+        background-color : transparent;
+        border : 1px solid #696969;
+        outline : none;
+        z-index : 2;
+        
+      }
+      
+      .pointer {
+        cursor : pointer;
+      }
+      
+      .article {
+        display : flex;
+        flex-flow : column wrap;
+        justify-content : center;
+        align-items : center;
+        
+      }
+      
+      .article-bordered {
+        border-radius : 4px;
+        border : 1px solid #696969;
+        padding : 1.2rem;
+        margin : 0.5rem;
+        width : 100%;
+
+      }
       
       
+      .main-text {
+        font-size : 3.0rem;
+        color : #172121;
+      }
+      
+      .article-text {
+        font-size : 1.5rem;
+        color : #383D3B;
+      }
+      
+      .revenue-article {
+        
+      }
+      
+      .right-btn {
+        align-self : flex-end;
+      }
+      
+      .text-center {
+        text-align : center;
+      }
+      
+      .table {
+        table-layout : auto;
+        width : 100%;
+        border-collapse : collapse;
+      
+      }
+      
+      thead th:nth-child(1) {
+        width : 20%;
+      }
+      
+      thead th:nth-child(2) {
+        width : 20%;
+      }
+      
+      thead th:nth-child(3) {
+        width : 20%;
+      }
+      
+      thead th:nth-child(4) {
+        width : 20%;
+      }
+      
+      td:nth-child(5) {
+        border-collapse : separate;
+        border-bottom : 1px solid #fff;
+      }
+      
+      tr:nth-child(even) {
+        background-color : rgba(199,206,219,0.25);        
+      } 
+      
+      td {
+        text-align : center;
+      }
+      
+      tbody tr:hover {
+        background-color : #c7cedb;
+      }
+      
+            
     </style>
 		
 	</head>
@@ -25,11 +131,11 @@
 
 	<body>
 		<header> 
-      <h1> Dashboard </h1>
+      <h1 class='main-text'> Dashboard </h1>
     </header>
-    <article id='revenue'></article>
-		<article id='customers'></article>
-		<article id='receipts'></article>
+    <article class='article-bordered' id='revenue'></article>
+		<article class='article-bordered' id='customers'></article>
+		<article class='article-bordered' id='receipts'></article>
 		<script type='module'>
 			import { addToPage } from '../scripts/dash.js'
 			import { customers, populateCustomersTable, getCustomers, addCustomer, createCustomerReceipt, customerHistory } from '../scripts/customers.js'
