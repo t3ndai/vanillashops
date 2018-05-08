@@ -166,7 +166,7 @@ export const receiptTotal = () => {
   
  let sum = document.getElementById('total')
   
-  sum.value = `$` + (Number.parseFloat(receipt.details.item_1.price) 
+  sum.value = (Number.parseFloat(receipt.details.item_1.price) 
   +  Number.parseFloat(receipt.details.item_2.price)
   +  Number.parseFloat(receipt.details.item_3.price)).toFixed(2)
   
