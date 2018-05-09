@@ -8,12 +8,7 @@ import { AuthorizationError, InputError } from './errors.js'
 //Models 
 
 export let receipt = {
-  shop : {
-    name : 'dzonga shop',
-    address : '2 lane way, pa 1944',
-    phone : '813 335 9871',
-    email : 'ptdzonga@gmail.com'
-  },
+  shop : { },
   customer : { },
   date : '',
   details : {
@@ -42,7 +37,7 @@ export let receipt = {
 
 //Views 
 
-function renderReceipt(customer, date) {
+function renderReceipt(shop, customer, date) {
   return `
   
     <article class='article'>
@@ -67,9 +62,9 @@ function renderReceipt(customer, date) {
   
         <tr rowspan='5'>
           
-          <tr> <td> Dzonga Shop </td></tr>
-          <tr> <td> ptdzonga@gmail.com </td></tr>
-          <tr> <td> 813 335 9871 </td></tr>
+          <tr> <td> ${shop.name } </td></tr>
+          <tr> <td> ${shop.email }</td></tr>
+          <tr> <td> ${shop.phone } </td></tr>
   
         </tr>
   
@@ -207,7 +202,10 @@ export function populateReceipt() {
   let date = (new Date).toDateString()
   receipt.date = date
   
+  let shop = JSON.parse(sessionStorage.getItem('shop'))
+  receipt.shop = shop
+  
   let article = document.getElementById('new-receipt')
-  article.innerHTML = renderReceipt(customer, date)
+  article.innerHTML = renderReceipt(shop, customer, date)
 
 }

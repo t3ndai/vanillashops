@@ -47,6 +47,7 @@ export const submit = async () => {
 			navigate('../views/new-shop.html')
 		}else {
 		  navigate('../views/dash.html')
+      sessionStorage.setItem('shop', JSON.stringify(response))
 		}
 			
 	}catch(err) {
