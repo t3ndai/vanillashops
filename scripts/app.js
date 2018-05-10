@@ -6,11 +6,12 @@ import { AuthorizationError } from './errors.js'
 //Actions 
 
 export async function checkAuth() {
-  
+ 
   try {
     await getData(API_URL)
-    navigate('/views/dash.html')
+    return true 
   }catch (err) {
+    return false
   }
   
 }

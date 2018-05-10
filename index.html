@@ -59,9 +59,13 @@
     </style>
     
     <script type='module'>
-      import { checkAuth } from '../scripts/app.js'
       
-      //checkAuth()
+      
+      import { checkAuth } from '../scripts/app.js'
+      if (!checkAuth()) {
+        location.assign('/')
+      }
+        
     </script>
 		
 	</head>
