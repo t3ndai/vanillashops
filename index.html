@@ -62,8 +62,8 @@
       
       
       import { checkAuth } from '../scripts/app.js'
-      if (!checkAuth()) {
-        location.assign('/')
+      if (checkAuth() === true) {
+        location.assign('/view/dash.html')
       }
         
     </script>
