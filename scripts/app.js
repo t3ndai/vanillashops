@@ -9,7 +9,7 @@ export async function checkAuth() {
  
   try {
     await getData(API_URL)
-    return true 
+    navigate('/views/dash.html')
   }catch (err) {
     return false
   }
