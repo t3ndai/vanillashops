@@ -55,7 +55,10 @@ export async function submit() {
       alert(`Session expired, we're logging you out`)
     }else if (err instanceof InputError) {
       alert('something wrong with the input data')
-    }else { console.log(err) }
+    }else { 
+      alert(`something went wrong, please try again later`)
+      console.log(err) 
+    }
     
   }
   

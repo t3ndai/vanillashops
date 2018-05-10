@@ -188,7 +188,10 @@ export async function submit() {
       alert('Expired session')
     }else if (err instanceof InputError) {
       alert('Wrong input data')
+    }else {
+      alert(`something went wrong, try again later`)
     }
+    
   }
   
 }

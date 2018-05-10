@@ -12,19 +12,19 @@ let customer = {}
 //Views 
 function renderCustomerReceipts(customer){
   return `
-    <article>
+    <article class='article-bordered'>
   
-      <button onclick='backToDash()'> Go Back To Dashboard </button>
+      <!--<button onclick='backToDash()'> Go Back To Dashboard </button>-->
   
-      <table id='customer-receipts-table'>
+      <table id='customer-receipts-table' class='table'>
   
-        <caption> ${customer.name}'s Purchase History </caption>
+        <caption class='article-text'> ${customer.name}'s Purchase History </caption>
   
         <tr>
   
           <th> # Number </th>
           <th> Date </th>
-          <th> Amount </th>
+          <th> $ Amount </th>
           <th> Items </th>
   
         </tr>
@@ -37,6 +37,7 @@ function renderCustomerReceipts(customer){
 }
 
 function renderReceipt(receipt) {
+  console.log(receipt)
   return `
       <tr> 
         <td> ${receipt.receipt_id } </td>
@@ -44,9 +45,9 @@ function renderReceipt(receipt) {
         <td> ${receipt.total} </td>
         <td> 
             <ul>
-                <li> 1 item </li>
-                <li> 2 item </li>
-                <li> 3 item </li>
+                <li> ${ parseReceiptDetails(receipt.details).item_1.detail } </li>
+                <li> ${ parseReceiptDetails(receipt.details).item_2.detail } </li>
+                <li> ${ parseReceiptDetails(receipt.details).item_3.detail } </li>
             </ul>
         </td>
       </tr>
@@ -77,6 +78,13 @@ function populateCustomerReceiptsTable(receipts) {
     row.innerHTML = renderReceipt(receipt)
     
   })
+  
+}
+
+function parseReceiptDetails(receipt) {
+  
+  let details = JSON.parse(receipt)  
+  return details
   
 }
 

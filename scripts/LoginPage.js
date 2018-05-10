@@ -3,6 +3,7 @@
 //Imports 
 import { API_URL } from './config.js'
 import { postData, navigate } from './utils.js'
+import { InputError } from './errors.js' 
 
 // Model 
 
@@ -56,9 +57,9 @@ export const submit = async () => {
 		.catch(err => console.log(err))*/
 	
 	try {
+    
 		let response = await postData(API_URL+'login', body)
 		
-    		
 		if (response.message) {
 			navigate('../views/auth.html')
 		}
@@ -68,6 +69,9 @@ export const submit = async () => {
     
     if (err instanceof InputError) {
       alert('input a correct email')
+    }
+    else {
+      alert('sorry something went wrong, try again later')
     }
 		console.log(err)
 	}
