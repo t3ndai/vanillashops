@@ -90,7 +90,7 @@ export async function getData(url) {
 		
 		if (err instanceof AuthorizationError) {
 			throw new AuthorizationError(err.message)
-		}
+		}s
 		console.log('Error:', err.message)
 	}
 }
